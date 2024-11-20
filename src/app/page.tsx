@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 
-function classNames(...classes) {
+function classNames(classes:any) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -105,10 +105,7 @@ export default function Home() {
                         {row.map((cell, cellIdx) => (
                           <td
                             key={cellIdx}
-                            className={classNames(
-                              rowIdx !== tableData.length - 2 ? 'border-b border-gray-200' : '',
-                              'whitespace-nowrap px-3 py-4 text-sm text-gray-500',
-                            )}
+                            className={'whitespace-nowrap px-3 py-4 text-sm text-gray-500'}
                           >
                             {cell}
                           </td>
