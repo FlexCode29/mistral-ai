@@ -1,9 +1,6 @@
 'use client'
 import { useState } from "react";
 
-function classNames(classes:any) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function Home() {
   const [url, setUrl] = useState("scholar.google.co.uk/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence");
