@@ -1,9 +1,12 @@
-import Image from "next/image";
 'use client'
 import { useState } from "react";
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
 export default function Home() {
-  const [url, setUrl] = useState("en.wikipedia.org/wiki/Manufacturing#List_of_countries_by_manufacturing_output");
+  const [url, setUrl] = useState("scholar.google.co.uk/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence");
   const [tableData, setTableData] = useState<string[][]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -59,20 +62,64 @@ export default function Home() {
           </div>
         </div>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <tbody className="bg-white divide-y divide-gray-200">
-              {tableData.map((row, i) => (
-                <tr key={i}>
-                  {row.map((cell, j) => (
-                    <td key={j} className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {cell}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+          <div className="sm:flex sm:items-center">
+            <div className="sm:flex-auto">
+              <h1 className="text-base font-semibold text-gray-900">Parsed Table Data</h1>
+              <p className="mt-2 text-sm text-gray-700">
+                Below is the data extracted from the URL you provided.
+              </p>
+            </div>
+            <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+              <button
+                onClick={() => setTableData([])}
+                className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white
+                shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2
+                focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Parse Another URL
+              </button>
+            </div>
+          </div>
+          <div className="mt-8 flow-root">
+            <div className="-mx-4 -my-2 sm:-mx-6 lg:-mx-8">
+              <div className="inline-block min-w-full py-2 align-middle">
+                <table className="min-w-full border-separate border-spacing-0">
+                  <thead>
+                    <tr>
+                      {tableData[0].map((headerCell, idx) => (
+                        <th
+                          key={idx}
+                          scope="col"
+                          className="sticky top-0 z-10 border-b border-gray-300 bg-white/75 px-3
+                          py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
+                        >
+                          {headerCell}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tableData.slice(1).map((row, rowIdx) => (
+                      <tr key={rowIdx}>
+                        {row.map((cell, cellIdx) => (
+                          <td
+                            key={cellIdx}
+                            className={classNames(
+                              rowIdx !== tableData.length - 2 ? 'border-b border-gray-200' : '',
+                              'whitespace-nowrap px-3 py-4 text-sm text-gray-500',
+                            )}
+                          >
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
