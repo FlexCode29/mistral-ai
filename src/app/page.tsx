@@ -34,7 +34,7 @@ export default function Home() {
       {!tableData.length ? (
         <div>
           <label htmlFor="company-website" className="block text-sm/6 font-medium text-gray-900">
-            Insert the URL of the website with the table you want to parse.
+            Insert the URL of the website with the table you want to parse. Keep in mind the 130k context limits this tool to short websites.
           </label>
           <div className="mt-2">
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-xl w-xl">
