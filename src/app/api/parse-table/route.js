@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import { Mistral } from '@mistralai/mistralai';
 
-const MISTRAL_API_KEY = 'lfCg0qDdHveTvYjVBem95CMwEcdocpwj'; // Set your Mistral API key in .env.local
+const MISTRAL_API_KEY = process.env.MISTRAL_API_KEY;
+if (!MISTRAL_API_KEY) {
+  throw new Error('MISTRAL_API_KEY environment variable is not set');
+}
 
 const client = new Mistral({ apiKey: MISTRAL_API_KEY });
 
