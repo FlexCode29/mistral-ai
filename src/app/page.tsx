@@ -42,7 +42,7 @@ export default function Home() {
                 id="company-website"
                 name="company-website"
                 type="text"
-                placeholder="en.wikipedia.org/wiki/Manufacturing#List_of_countries_by_manufacturing_output"
+                placeholder="scholar.google.co.uk/citations?view_op=top_venues&hl=en&vq=eng_artificialintelligence"
                 className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6"
               />
               <button 
